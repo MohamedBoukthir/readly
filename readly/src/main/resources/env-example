@@ -1,0 +1,11 @@
+# This file contains the environment variables for the application
+# The variables are used to connect to the database
+
+MYSQL_USERNAME=root
+MYSQL_PASSWORD=root
+DATABASE_NAME=readly
+
+# The variables are used to send emails
+
+MAIL_USERNAME=mohamed
+MAIL_PASSWORD=mohamed
