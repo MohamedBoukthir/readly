@@ -39,7 +39,7 @@ public class User implements UserDetails, Principal {
     private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
-   private List<Role> roles;
+    private List<Role> roles;
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
