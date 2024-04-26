@@ -1,11 +1,13 @@
 # This file contains the environment variables for the application
 # The variables are used to connect to the database
-
-MYSQL_USERNAME=root
-MYSQL_PASSWORD=root
-DATABASE_NAME=readly
+MYSQL_USERNAME=
+MYSQL_PASSWORD=
+DATABASE_NAME=
 
 # The variables are used to send emails
+MAIL_USERNAME=
+MAIL_PASSWORD=
 
-MAIL_USERNAME=mohamed
-MAIL_PASSWORD=mohamed
+# The variables are used to generate JWT tokens
+JWT_SECRET=
+JWT_EXPIRATION=
