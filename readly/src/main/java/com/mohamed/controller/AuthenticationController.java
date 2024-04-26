@@ -1,5 +1,7 @@
 package com.mohamed.controller;
 
+import com.mohamed.payload.LoginRequest;
+import com.mohamed.payload.LoginResponse;
 import com.mohamed.payload.RegisterRequest;
 import com.mohamed.services.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,9 +22,25 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<?> register(@RequestBody @Valid RegisterRequest registerRequest) throws MessagingException {
+    public ResponseEntity<?> register(
+            @RequestBody @Valid RegisterRequest registerRequest
+    ) throws MessagingException {
         authenticationService.register(registerRequest);
         return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(
+            @RequestBody @Valid LoginRequest loginRequest
+    ) {
+        return ResponseEntity.ok(authenticationService.login(loginRequest));
+    }
+
+    @GetMapping("activate-account")
+    public void confirm(
+            @RequestParam String token
+    ) throws MessagingException {
+        authenticationService.activateAccount(token);
     }
 
 }
