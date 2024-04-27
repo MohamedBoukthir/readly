@@ -1,4 +1,4 @@
-package com.mohamed.payload;
+package com.mohamed.payload.auth;
 
 import lombok.Builder;
 import lombok.Getter;

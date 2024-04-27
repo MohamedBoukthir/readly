@@ -1,8 +1,8 @@
 package com.mohamed.controller;
 
-import com.mohamed.payload.LoginRequest;
-import com.mohamed.payload.LoginResponse;
-import com.mohamed.payload.RegisterRequest;
+import com.mohamed.payload.auth.LoginRequest;
+import com.mohamed.payload.auth.LoginResponse;
+import com.mohamed.payload.auth.RegisterRequest;
 import com.mohamed.services.AuthenticationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
