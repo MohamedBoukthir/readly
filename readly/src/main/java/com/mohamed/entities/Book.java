@@ -36,6 +36,7 @@ public class Book extends BaseEntity {
     @OneToMany(mappedBy = "book")
     private List<BookTransactionHistory> transactionHistories;
 
+    // Calculate the average rate of the book feedbacks
     @Transient
     public double getRate(){
         if (feedbacks == null || feedbacks.isEmpty()) {

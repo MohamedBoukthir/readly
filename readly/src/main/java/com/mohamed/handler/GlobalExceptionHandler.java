@@ -1,5 +1,6 @@
 package com.mohamed.handler;
 
+import com.mohamed.exception.OperationNotPermittedException;
 import com.mohamed.payload.exception.ExceptionResponse;
 import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
@@ -65,6 +66,17 @@ public class GlobalExceptionHandler {
                 .body(
                         ExceptionResponse.builder()
                                 .error(messagingException.getMessage())
+                                .build()
+                );
+    }
+
+    @ExceptionHandler(OperationNotPermittedException.class)
+    public ResponseEntity<ExceptionResponse> handleException(OperationNotPermittedException operationNotPermittedException) {
+        return ResponseEntity
+                .status(BAD_REQUEST)
+                .body(
+                        ExceptionResponse.builder()
+                                .error(operationNotPermittedException.getMessage())
                                 .build()
                 );
     }
