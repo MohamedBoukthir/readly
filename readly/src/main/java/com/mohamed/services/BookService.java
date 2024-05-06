@@ -5,6 +5,7 @@ import com.mohamed.entities.Book;
 import com.mohamed.entities.BookTransactionHistory;
 import com.mohamed.entities.User;
 import com.mohamed.exception.OperationNotPermittedException;
+import com.mohamed.file.FileStorageService;
 import com.mohamed.payload.book.BookMapper;
 import com.mohamed.payload.book.BookRequest;
 import com.mohamed.payload.book.BookResponse;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Objects;
@@ -32,6 +34,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final BookTransactionHistoryRepository bookTransactionHistoryRepository;
     private final BookMapper bookMapper;
+    private final FileStorageService fileStorageService;
 
     // Save a book and return its ID
     public Integer save(BookRequest bookRequest, Authentication connectedUser) {
@@ -244,5 +247,16 @@ public class BookService {
         // Update the book transaction history and save it to the database
         bookTransactionHistory.setReturnedApproved(true);
         return bookTransactionHistoryRepository.save(bookTransactionHistory).getId();
+    }
+
+    // Upload a book cover picture and save it to the database
+    public void uploadBookCoverPic(MultipartFile file, Authentication connectedUser, Integer bookId) {
+        // Find the book by ID or throw an exception if not found
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new EntityNotFoundException("Book not found with ID: " + bookId));
+        User user = ((User) connectedUser.getPrincipal());
+        var bookCover = fileStorageService.saveFile(file, user.getId());
+        book.setCover(bookCover);
+        bookRepository.save(book);
     }
 }
