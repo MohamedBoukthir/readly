@@ -2,9 +2,11 @@ package com.mohamed.payload.feedback;
 
 import com.mohamed.entities.Book;
 import com.mohamed.entities.Feedback;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Service
 public class FeedbackMapper {
     public Feedback toFeedback(FeedbackRequest feedbackRequest) {
         return Feedback.builder()
@@ -24,7 +26,7 @@ public class FeedbackMapper {
         return FeedbackResponse.builder()
                 .note(feedback.getNote())
                 .comment(feedback.getComment())
-                .ownFeedback(Objects.equals(feedback.getCreatedAt(), id))
+                .ownFeedback(Objects.equals(feedback.getCreatedBy(), id))
                 .build();
     }
 }

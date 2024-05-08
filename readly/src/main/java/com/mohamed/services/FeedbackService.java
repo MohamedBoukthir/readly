@@ -26,8 +26,8 @@ import java.util.Objects;
 public class FeedbackService {
 
     private final BookRepository bookRepository;
-    private final FeedbackMapper feedbackMapper;
     private final FeedbackRepository feedbackRepository;
+    private final FeedbackMapper feedbackMapper;
 
     // Save feedback
     public Integer saveFeedback(FeedbackRequest feedbackRequest, Authentication connectedUser) {
