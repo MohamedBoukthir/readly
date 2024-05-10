@@ -13,11 +13,11 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
-                        name = "Mohamed",
+                        name = "Mohamed Boukthir",
                         email = "medboukthir@gmail.com",
                         url = "https://github.com/MohamedBoukthir"
                 ),
-                description = "Open API documentation for spring security",
+                description = "Open API documentation for Spring Security API.",
                 title = "Spring Security API",
                 version = "1.0.0",
                 license = @License(
@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         servers = {
                 @Server(
                         description = "Local server",
-                        url = "http://localhost:8082/api/v1"
+                        url = "http://localhost:8088/api/v1"
                 ),
                 @Server(
                         description = "Production server",
@@ -44,7 +44,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 )
 @SecurityScheme(
         name = "bearerAuth",
-        description = "jwt authentication scheme",
+        description = "JWT authentication scheme",
         scheme = "bearer",
         type = SecuritySchemeType.HTTP,
         bearerFormat = "JWT",
