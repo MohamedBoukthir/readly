@@ -11,20 +11,35 @@
         <p *ngFor="let message of errorMessage"> {{ message }} </p>
       </div>
     </div>
-    <!-- Container for login form -->
+    <!-- Container for register form -->
     <div class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl 2xl:max-w-2xl mx-auto">
-      <!-- Login title and description -->
+      <!-- register title and description -->
       <div class="mb-8 space-y-3">
-        <p class="text-2xl font-bold">Login</p>
-        <p class="text-gray-500">Welcome back! <br/>Please enter
-          your email and password to proceed</p>
+        <p class="text-2xl font-bold">Register</p>
+        <p class="text-gray-500">Welcome! <br/>Please fill in your details to create a new account.</p>
       </div>
       <hr class="mb-2">
-      <!-- Login form -->
+      <!-- register form -->
       <form class="w-full">
         <div class="mb-10 space-y-3">
           <div class="space-y-1">
             <div class="space-y-2">
+              <!-- Firstname label and input field -->
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="email">Firstname</label>
+              <input
+                class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
+                 flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="firstname" placeholder="John" name="firstname" type="text" [(ngModel)]="registerRequest.firstname"/>
+              <!-- Lastname label and input field -->
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="email">Lastname</label>
+              <input
+                class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
+                 flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="lastname" placeholder="Doe" name="lastname" type="text" [(ngModel)]="registerRequest.lastname"/>
               <!-- Email label and input field -->
               <label
                 class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -32,7 +47,7 @@
               <input
                 class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
                  flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                id="email" placeholder="mail@example.com" name="email" type="email" [(ngModel)]="loginRequest.email"/>
+                id="email" placeholder="mail@example.com" name="email" type="email" [(ngModel)]="registerRequest.email"/>
               <!-- Password label and input field -->
               <label
                 class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -41,23 +56,24 @@
                 class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
                  flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="password" placeholder="********" name="password" type="password"
-                [(ngModel)]="loginRequest.password"/>
+                [(ngModel)]="registerRequest.password"/>
             </div>
           </div>
-          <!-- Login button -->
+          <!-- register button -->
           <button
             class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
              rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
               focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
-            type="button" (click)="login()">
-            Login
+            type="button" (click)="register()">
+            Create an account
           </button>
         </div>
       </form>
-      <!-- Signup link -->
-      <div class="text-center"> No account? <a class="text-black font-bold hover:underline cursor-pointer"
-                                               routerLink="/register">
-        Create one</a></div>
+      <!-- SignIn link -->
+      <div class="text-center"> Already have an account? <a class="text-black font-bold hover:underline cursor-pointer"
+                                               routerLink="/login">
+        Login</a></div>
     </div>
   </div>
 </div>
+
