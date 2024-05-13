@@ -8,11 +8,11 @@ export class TokenService {
   constructor() { }
 
   set token(token: string) {
-    localStorage.setItem("token", token);
+    sessionStorage.setItem("token", token);
   }
 
   get token() {
-    return localStorage.getItem("token") as string;
+    return sessionStorage.getItem("token") as string;
   }
 
 }
