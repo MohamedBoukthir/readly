@@ -3,5 +3,9 @@
 }
 
 .activate-error {
-  color: red;
+  color: #fd4141;
+}
+
+.activate-message {
+  color: #4caf50;
 }
