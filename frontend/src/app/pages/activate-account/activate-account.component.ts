@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthenticationService} from "../../services/services/authentication.service";
 import {Router} from "@angular/router";
 
@@ -14,7 +14,7 @@ export class ActivateAccountComponent {
   submitted = false;
 
   constructor(
-    private router : Router,
+    private router: Router,
     private authenticationService: AuthenticationService
   ) {
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RegisterRequest} from "../../services/models/register-request";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/services/authentication.service";
@@ -14,7 +14,7 @@ export class RegisterComponent {
   errorMessage: Array<string> = [];
 
   constructor(
-    private router : Router,
+    private router: Router,
     private authenticationService: AuthenticationService
   ) {
   }
@@ -23,7 +23,7 @@ export class RegisterComponent {
     this.errorMessage = [];
     this.authenticationService.register({
       body: this.registerRequest
-      }).subscribe({
+    }).subscribe({
       next: () => {
         this.router.navigate(['/activate-account']);
       },

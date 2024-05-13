@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {LoginRequest} from "../../services/models/login-request";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/services/authentication.service";
@@ -11,17 +11,18 @@ import {TokenService} from "../../services/token/token.service";
 })
 export class LoginComponent {
 
-  loginRequest : LoginRequest = {email: '', password: ''};
-  errorMessage : Array<String> = [];
+  loginRequest: LoginRequest = {email: '', password: ''};
+  errorMessage: Array<String> = [];
 
   constructor(
-    private router : Router,
-    private authenticationService : AuthenticationService,
-    private tokenService : TokenService
-  ) { }
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private tokenService: TokenService
+  ) {
+  }
 
   login() {
-    this.errorMessage= [];
+    this.errorMessage = [];
     this.authenticationService.login({
       body: this.loginRequest
     }).subscribe({
@@ -35,8 +36,8 @@ export class LoginComponent {
           this.errorMessage = error.error.validationErrors;
         } else {
           this.errorMessage.push(error.error.error);
+        }
       }
-    }
     });
   }
 
