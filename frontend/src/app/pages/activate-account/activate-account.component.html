@@ -1,0 +1,48 @@
+<div class="bg-white" *ngIf="submitted else codeForm">
+  <div class="flex h-screen flex-col items-center justify-center">
+    <div class="activate-message" *ngIf="isOkay else activationError">
+      <h2>Activation successful !</h2>
+      <p>Your account has been successfully activated.</p>
+      <p>You can now login to your account.</p>
+      <button
+        class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+             rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+              focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        routerLink="/login">
+        Go to login
+      </button>
+    </div>
+  </div>
+  <ng-template #activationError>
+    <div class="activate-error">
+      <h2>Activation failed !</h2>
+      <p> {{ message }} </p>
+      <p>You can now login to your account.</p>
+      <button
+        class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+             rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+              focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        (click)="submitted = false">
+        Try again
+      </button>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #codeForm>
+  <div class="flex h-screen flex-col items-center justify-center">
+    <div class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl 2xl:max-w-2xl mx-auto">
+      <div class="text-center">
+        <h2 class="font-light text-xl mb-6">Please type your activation code.</h2>
+        <code-input
+          [isCodeHidden]="false"
+          [codeLength]="5"
+          [code]="'number'"
+          (codeCompleted)="onCodeCompleted($event)"
+        ></code-input>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+

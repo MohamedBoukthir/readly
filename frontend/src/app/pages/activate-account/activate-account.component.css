@@ -1,0 +1,7 @@
+.activate-message, .activate-error {
+  text-align: center;
+}
+
+.activate-error {
+  color: red;
+}
