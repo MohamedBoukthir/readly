@@ -16,28 +16,28 @@
     <ul
       class="hidden gap-2 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-start lg:w-auto lg:space-x-6">
       <li>
-        <a routerLink="/books">
-          <i class="block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Home</i>
+        <a routerLink="/books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <i class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Home</i>
         </a>
       </li>
       <li>
-        <a routerLink="/my-books">
-          <i class="block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My books</i>
+        <a routerLink="/my-books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <i class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My books</i>
         </a>
       </li>
       <li>
-        <a routerLink="/my-waiting-list">
-          <i class="block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My waiting list</i>
+        <a routerLink="/my-waiting-list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <i class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My waiting list</i>
         </a>
       </li>
       <li>
-        <a routerLink="/my-returned-books">
-          <i class="block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My returned books</i>
+        <a routerLink="/my-returned-books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <i class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My returned books</i>
         </a>
       </li>
       <li>
-        <a routerLink="/my-borrowed-books">
-          <i class="block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Borrowed books</i>
+        <a routerLink="/my-borrowed-books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <i class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Borrowed books</i>
         </a>
       </li>
     </ul>
