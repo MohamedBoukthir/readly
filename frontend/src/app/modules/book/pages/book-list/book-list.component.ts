@@ -12,7 +12,7 @@ export class BookListComponent implements OnInit {
 
   bookResponse: PageResponseBookResponse = {};
 
-  size = 10;
+  size = 5;
   page = 0;
 
   constructor(
@@ -32,6 +32,7 @@ export class BookListComponent implements OnInit {
       size: this.size
     }).subscribe({
       next: (books) => {
+        console.log(books);
         this.bookResponse = books;
       }
     })

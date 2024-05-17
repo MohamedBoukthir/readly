@@ -5,13 +5,15 @@ import { BookRoutingModule } from './book-routing.module';
 import { MainComponent } from './pages/main/main.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BookListComponent } from './pages/book-list/book-list.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     NavbarComponent,
-    BookListComponent
+    BookListComponent,
+    BookCardComponent
   ],
   exports: [
     NavbarComponent
