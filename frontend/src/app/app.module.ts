@@ -14,20 +14,23 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpTokenInterceptor} from "./services/interceptor/http-token.interceptor";
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+  ],
+  exports: [
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CodeInputModule
+    CodeInputModule,
   ],
   providers: [
     HttpClient,
@@ -36,8 +39,7 @@ import {HttpTokenInterceptor} from "./services/interceptor/http-token.intercepto
       useClass: HttpTokenInterceptor,
       multi: true
     }
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule {
 }

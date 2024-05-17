@@ -1,33 +1,51 @@
 <div class="flex flex-wrap place-items-center h-screen">
   <!-- card -->
-  <div  class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 m-auto">
-    <a href="#" class="w-full block h-full">
-      <img height="200" alt="book cover" [src]="bookCover" class="max-h-40 w-full object-cover"/>
+  <div
+    class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 m-auto">
+    <a class="w-full block h-full">
+      <img alt="book cover"
+           src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+           [appNgOptimizedImage]="bookCover ?? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
+           class="max-h-40 w-full object-cover"/>
       <div class="bg-white w-full p-4">
         <p class="text-indigo-500 text-2xl font-medium">
-            {{ book.title }}
+          {{ book.title }}
         </p>
         <p class="text-gray-800 text-sm font-medium mb-1">
           Author :  {{ book.author }}
         </p>
         <p class="text-gray-800 text-sm font-medium mb-1">
-           {{ book.isbn }}
+          ISBN : {{ book.isbn }}
         </p>
-        <p class="text-gray-600 font-light text-md">
-          {{ book.synopsis}}
+        <p class="text-gray-600 font-light text-md" appReadMore="100">
+          {{ book.synopsis }}
         </p>
-        <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2" *ngIf="!manage">
-          <img (click)="onShowDetails()" src="/assets/Info.svg" alt="info" class="h-5 w-5 rounded hover:-translate-y-1/2 hover:shadow-2xl">
-          <img (click)="onBorrow()" src="/assets/List.svg" alt="list" class="h-5 w-5 rounded hover:-translate-y-1/2 hover:shadow-2xl">
-          <img (click)="onLike()" src="/assets/Heart.svg" alt="wishlist" class="h-5 w-5 rounded hover:-translate-y-1/2 hover:shadow-2xl">
+        <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2"
+             *ngIf="!manage">
+          <img (click)="onShowDetails()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/Info.svg'" alt="info"
+               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+          <img (click)="onBorrow()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/List.svg'" alt="list"
+               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+          <img (click)="onLike()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/Heart.svg'" alt="wishlist"
+               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
         </div>
-        <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2" *ngIf="manage">
-          <img (click)="onEdit()" src="/assets/Edit.svg" alt="Edit" class="h-5 w-5 rounded hover:-translate-y-1/2 hover:shadow-2xl">
-          <img (click)="onShare()" src="/assets/Share.svg" alt="Share" class="h-5 w-5 rounded hover:-translate-y-1/2 hover:shadow-2xl">
-          <img (click)="onArchive()" src="/assets/Archive.svg" alt="Archive" class="h-5 w-5 rounded hover:-translate-y-1/2 hover:shadow-2xl">
+        <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2"
+             *ngIf="manage">
+          <img (click)="onEdit()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'/assets/Edit.svg'" alt="Edit"
+               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+          <img (click)="onShare()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'/assets/Share.svg'" alt="Share"
+               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+          <img (click)="onArchive()"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'/assets/Archive.svg'" alt="Archive"
+               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
         </div>
         <div class="flex items-center mt-2">
-          <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+          <img class='w-10 h-10 object-cover rounded-full' alt='User avatar'
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'">
 
           <div class="pl-3">
             <div class="font-medium">

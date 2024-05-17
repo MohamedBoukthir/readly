@@ -25,7 +25,7 @@ export class BookCardComponent {
     if (this._book.cover) {
       return 'data:image/jpeg;base64,' + this._book.cover;
     }
-    return 'https://source.unsplash.com/user/c_v_r/1900x800';
+    return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
   }
 
   get manage(): boolean {
@@ -38,17 +38,17 @@ export class BookCardComponent {
   }
 
   @Output()
-  private share : EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  private share: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
   @Output()
-  private archive : EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  private archive: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
   @Output()
-  private like : EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  private like: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
   @Output()
-  private borrow : EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  private borrow: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
   @Output()
-  private edit : EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  private edit: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
   @Output()
-  private details : EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
+  private details: EventEmitter<BookResponse> = new EventEmitter<BookResponse>();
 
   constructor() {
   }
