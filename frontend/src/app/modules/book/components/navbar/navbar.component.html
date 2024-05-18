@@ -15,36 +15,36 @@
     class="hidden gap-2 absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:items-start lg:w-auto lg:space-x-6">
     <li>
       <a routerLink="/books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-        <i
-          class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Home</i>
+        <span
+          class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Home</span>
       </a>
     </li>
     <li>
       <a routerLink="/my-books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-        <i
+        <span
           class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My
-          books</i>
+          books</span>
       </a>
     </li>
     <li>
       <a routerLink="/my-waiting-list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-        <i
+        <span
           class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My
-          waiting list</i>
+          waiting list</span>
       </a>
     </li>
     <li>
       <a routerLink="/my-returned-books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-        <i
+        <span
           class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">My
-          returned books</i>
+          returned books</span>
       </a>
     </li>
     <li>
       <a routerLink="/my-borrowed-books" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
-        <i
+        <span
           class="nav-link block p-4 text-sm font-semibold text-black hover:bg-gray-200 hover:text-gray-600 rounded-full">Borrowed
-          books</i>
+          books</span>
       </a>
     </li>
   </ul>
@@ -98,7 +98,9 @@
              routerLink="/my-borrowed-books">Borrowed books</a>
         </li>
       </ul>
-      <form class="flex gap-2 items-center mt-44" role="search">
+    </div>
+    <div class="mt-auto">
+      <form class="flex gap-2 items-center" role="search">
         <input class="bg-gray-100 border-0 p-2 rounded-full" type="search" placeholder="Search">
         <button class="bg-gray-900 p-2 rounded-full" type="submit">
           <i class="fas fa-search text-white"></i>
@@ -107,8 +109,6 @@
           <i class="fas fa-door-open text-white"></i>
         </button>
       </form>
-    </div>
-    <div class="mt-auto">
       <p class="my-4 text-xs text-center text-gray-400">
         <span>Copyright ©  {{ currentYear }} </span> <br>
         <span>
