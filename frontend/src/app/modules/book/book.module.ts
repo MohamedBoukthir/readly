@@ -8,6 +8,7 @@ import {BookListComponent} from './pages/book-list/book-list.component';
 import {BookCardComponent} from './components/book-card/book-card.component';
 import {ReadMoreDirective} from "../../directives/read-more.directive";
 import {NgOptimizedImageDirective} from "../../directives/ng-optimized-image.directive";
+import { RateComponent } from './components/rate/rate.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {NgOptimizedImageDirective} from "../../directives/ng-optimized-image.dir
     BookListComponent,
     BookCardComponent,
     ReadMoreDirective,
-    NgOptimizedImageDirective
+    NgOptimizedImageDirective,
+    RateComponent
   ],
   exports: [
     NavbarComponent

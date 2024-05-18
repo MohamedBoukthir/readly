@@ -51,8 +51,11 @@
             <div class="font-medium">
               Owner : {{ book.owner }}
             </div>
-            <div class="text-gray-600 text-sm">
-              5 stars
+            <div class="text-gray-600 text-sm flex items-center gap-2">
+              <app-rate [rate]="book.rate || 0"></app-rate>
+              <span class="font-bold" *ngIf="book.rate || 0 > 0">
+                {{ book.rate }}
+              </span>
             </div>
           </div>
         </div>

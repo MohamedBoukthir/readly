@@ -1,0 +1,13 @@
+<div class="max-w-2xl mx-auto">
+  <div class="flex items-center">
+    <ng-container *ngFor="let _ of [].constructor(fullStars); let o = index">
+      <i class="fas fa-star text-yellow-300"></i>
+    </ng-container>
+    <ng-container *ngIf="hasHalfStar">
+      <i class="fas fa-star-half-alt text-yellow-300"></i>
+    </ng-container>
+    <ng-container *ngFor="let _ of [].constructor(emptyStars); let o = index">
+      <i class="fas fa-star"></i>
+    </ng-container>
+  </div>
+</div>
