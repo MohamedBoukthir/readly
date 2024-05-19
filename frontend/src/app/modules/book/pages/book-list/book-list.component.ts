@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {BookService} from "../../../../services/services/book.service";
 import {PageResponseBookResponse} from "../../../../services/models/page-response-book-response";
+import {BookResponse} from "../../../../services/models/book-response";
 
 @Component({
   selector: 'app-book-list',
@@ -11,9 +12,10 @@ import {PageResponseBookResponse} from "../../../../services/models/page-respons
 export class BookListComponent implements OnInit {
 
   bookResponse: PageResponseBookResponse = {};
-
   size = 10;
   page = 0;
+  message: string = '';
+  level = 'Success';
 
   constructor(
     private bookService: BookService,
@@ -59,7 +61,7 @@ export class BookListComponent implements OnInit {
   }
 
   goToNextPage() {
-    this.page++;
+    this.page ++;
     this.findAllBooks();
   }
 
@@ -68,4 +70,25 @@ export class BookListComponent implements OnInit {
   }
 
 
+  borrowBook(book: BookResponse) {
+    this.message = '';
+    this.level = 'Success';
+    this.bookService.borrowBook({
+    'book-id': book.id as number
+    }).subscribe({
+      next: () => {
+        this.level = 'Success';
+        this.message = 'Book borrowed successfully';
+      },
+      error: (error) => {
+        console.log(error);
+        this.level = 'Error';
+        this.message = error.error.error;
+      }
+    });
+  }
+
+  getAlertClass() {
+    return this.level === 'Success' ? 'flex bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700' : 'flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700';
+  }
 }
