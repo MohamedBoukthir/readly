@@ -25,7 +25,7 @@ export class BookCardComponent {
     if (this._book.cover) {
       return 'data:image/jpeg;base64,' + this._book.cover;
     }
-    return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    return 'https://source.unsplash.com/user/c_v_r/1900x800'; // TODO : replace with : data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
   }
 
   get manage(): boolean {

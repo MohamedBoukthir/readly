@@ -12,7 +12,7 @@ export class BookListComponent implements OnInit {
 
   bookResponse: PageResponseBookResponse = {};
 
-  size = 2;
+  size = 10;
   page = 0;
 
   constructor(
