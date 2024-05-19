@@ -19,7 +19,7 @@ import { RateComponent } from './components/rate/rate.component';
     BookCardComponent,
     ReadMoreDirective,
     NgOptimizedImageDirective,
-    RateComponent
+    RateComponent,
   ],
   exports: [
     NavbarComponent
