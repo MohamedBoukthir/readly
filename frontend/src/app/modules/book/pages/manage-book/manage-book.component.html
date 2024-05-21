@@ -1,0 +1,100 @@
+<div class="p-2">
+  <h2 class="text-center font-bold text-2xl mb-6">Manage My Book</h2>
+  <hr>
+  <!-- Alert -->
+  <div *ngIf="errorMessage.length"
+       class="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700"
+       role="alert"
+  >
+    <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+            clip-rule="evenodd"></path>
+    </svg>
+    <div>
+      <p *ngFor="let msg of errorMessage">
+        {{ msg }}
+      </p>
+    </div>
+  </div>
+  <!-- Manage Book Form -->
+  <div class="flex justify-center mt-6">
+    <!-- Container for Manage form -->
+    <div
+      class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl 2xl:max-w-2xl mx-auto lg:border-b-4 lg:border-2 lg:border-gray-300 lg:rounded-2xl lg:p-14">
+      <!-- Manage form -->
+      <form class="w-full sm:w-[500px]">
+        <div class="mb-10 space-y-3">
+          <div class="space-y-1">
+            <div class="space-y-2">
+              <!-- Book Cover label and input field -->
+              <label class="mb-4 w-64 mx-auto flex flex-col items-center px-4 py-6 bg-white rounded-lg shadow-lg tracking-wide border cursor-pointer hover:bg-gray-300 hover:text-white">
+                <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                </svg>
+                <span class="mt-2 mb-2 text-base leading-normal capitalize">Select a file</span>
+                <img src="" width="100%" height="100%" [src]="selectedPic ||'https://source.unsplash.com/user/c_v_r/1900x800'" alt="Book cover">
+                <input
+                  (change)="onFileSelected($event)"
+                  type='file'
+                  class="hidden"
+                  accept="image/*"
+                  id="file"
+                />
+              </label>
+              <!-- Title label and input field -->
+              <label
+                class="mb-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="title">Title</label>
+              <input
+                class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
+                 flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="title" placeholder="Book title" name="title" type="text" [(ngModel)]="bookRequest.title"/>
+              <!-- Author label and input field -->
+              <label
+                class="mb-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="author">Author</label>
+              <input
+                class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
+                 flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="author" placeholder="Author name" name="author" type="text"
+                [(ngModel)]="bookRequest.author"/>
+              <!-- isbn label and input field -->
+              <label
+                class="mb-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="isbn">Book isbn</label>
+              <input
+                class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring
+                 flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="isbn" placeholder="Book ISBN" name="isbn" type="text"
+                [(ngModel)]="bookRequest.isbn"/>
+              <!-- isbn label and input field -->
+              <label
+                class="mb-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="synopsis">Book Synopsis</label>
+              <textarea
+                class=" border-input block border p-2.5 w-full text-sm text-gray-900 bg-background rounded-md focus:ring-blue-500 focus:border-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                id="synopsis" placeholder="Book Synopsis . . ." name="synopsis" rows="6"
+                [(ngModel)]="bookRequest.synopsis">
+              </textarea>
+              <div class="flex justify-end gap-2 w-full !mt-8">
+                <button
+                  class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+                         focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  type="submit" (click)="save()">
+                  Save Book
+                </button>
+                <a routerLink="/books/my-books" type="submit" class=" ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+                         focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+                  Cancel
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,9 @@ import {BookCardComponent} from './components/book-card/book-card.component';
 import {ReadMoreDirective} from "../../directives/read-more.directive";
 import {NgOptimizedImageDirective} from "../../directives/ng-optimized-image.directive";
 import { RateComponent } from './components/rate/rate.component';
+import { MyBooksComponent } from './pages/my-books/my-books.component';
+import { ManageBookComponent } from './pages/manage-book/manage-book.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -20,6 +23,8 @@ import { RateComponent } from './components/rate/rate.component';
     ReadMoreDirective,
     NgOptimizedImageDirective,
     RateComponent,
+    MyBooksComponent,
+    ManageBookComponent,
   ],
   exports: [
     NavbarComponent
@@ -27,6 +32,7 @@ import { RateComponent } from './components/rate/rate.component';
   imports: [
     CommonModule,
     BookRoutingModule,
+    FormsModule,
   ]
 })
 export class BookModule {
