@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {BookRequest} from "../../../../services/models/book-request";
 import {BookService} from "../../../../services/services/book.service";
 import {Router} from "@angular/router";
@@ -12,13 +12,14 @@ export class ManageBookComponent {
 
   errorMessage: Array<string> = [];
   selectedPic: string | undefined;
-  selectedBookCover : any;
+  selectedBookCover: any;
   bookRequest: BookRequest = {author: "", isbn: "", synopsis: "", title: ""};
 
   constructor(
     private bookService: BookService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   onFileSelected(image: any) {
     this.selectedBookCover = image.target.files[0];

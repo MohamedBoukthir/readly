@@ -21,19 +21,22 @@
   <div class="flex justify-center mt-6">
     <!-- Container for Manage form -->
     <div
-      class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl 2xl:max-w-2xl mx-auto lg:border-b-4 lg:border-2 lg:border-gray-300 lg:rounded-2xl lg:p-14">
+      class="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl 2xl:max-w-2xl mx-auto lg:border-b-1 lg:border-2 lg:border-gray-100 lg:rounded-xl lg:p-14">
       <!-- Manage form -->
       <form class="w-full sm:w-[500px]">
         <div class="mb-10 space-y-3">
           <div class="space-y-1">
             <div class="space-y-2">
               <!-- Book Cover label and input field -->
-              <label class="mb-4 w-64 mx-auto flex flex-col items-center px-4 py-6 bg-white rounded-lg shadow-lg tracking-wide border cursor-pointer hover:bg-gray-300 hover:text-white">
+              <label
+                class="mb-4 w-64 mx-auto flex flex-col items-center px-4 py-6 bg-white rounded-lg shadow-lg tracking-wide border cursor-pointer hover:bg-gray-300 hover:text-white">
                 <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  <path
+                    d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"/>
                 </svg>
                 <span class="mt-2 mb-2 text-base leading-normal capitalize">Select a file</span>
-                <img src="" width="100%" height="100%" [src]="selectedPic ||'https://source.unsplash.com/user/c_v_r/1900x800'" alt="Book cover">
+                <img src="" width="100%" height="100%"
+                     [src]="selectedPic ||'https://source.unsplash.com/user/c_v_r/1900x800'" alt="Book cover">
                 <input
                   (change)="onFileSelected($event)"
                   type='file'
@@ -68,7 +71,7 @@
                  flex h-10 w-full rounded-md border px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="isbn" placeholder="Book ISBN" name="isbn" type="text"
                 [(ngModel)]="bookRequest.isbn"/>
-              <!-- isbn label and input field -->
+              <!-- Synopsis label and input field -->
               <label
                 class="mb-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 for="synopsis">Book Synopsis</label>
@@ -77,6 +80,46 @@
                 id="synopsis" placeholder="Book Synopsis . . ." name="synopsis" rows="6"
                 [(ngModel)]="bookRequest.synopsis">
               </textarea>
+              <!-- Shareable Checkbox -->
+              <div class="inline-flex items-center">
+                <label
+                  class="relative flex cursor-pointer items-center rounded-full p-3"
+                  data-ripple-dark="true"
+
+                >
+                  <input
+                    [(ngModel)]="bookRequest.shareable"
+                    id="shareable"
+                    name="shareable"
+                    type="checkbox"
+                    class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-black checked:bg-black checked:before:bg-black hover:before:opacity-10"
+                  />
+                  <div
+                    class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-3.5 w-3.5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      stroke-width="1"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </label>
+                <label
+                  for="shareable"
+                  class="mt-px cursor-pointer select-none font-light text-gray-700"
+                >
+                  Share Me
+                </label>
+              </div>
+              <!-- Save abd cancel buttons -->
               <div class="flex justify-end gap-2 w-full !mt-8">
                 <button
                   class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
@@ -86,7 +129,7 @@
                   Save Book
                 </button>
                 <a routerLink="/books/my-books" type="submit" class=" ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
-                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-600 focus-visible:outline-none
                          focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
                   Cancel
                 </a>
