@@ -1,7 +1,14 @@
-<div class="flex flex-wrap place-items-center">
+<div
+  class="flex flex-wrap place-items-center"
+>
   <!-- card -->
   <div
-    class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 m-auto">
+    class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-60 md:w-80 m-auto border"
+    style="width: 20rem;"
+    [ngClass]="{
+    'border-green-300': book.shareable,
+    'border-yellow-300': book.archived
+  }">
     <a class="w-full block h-full">
       <img alt="book cover"
            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -22,11 +29,15 @@
         </p>
         <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2"
              *ngIf="!manage">
-          <img (click)="onShowDetails()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/Info.svg'" alt="info"
+          <img (click)="onShowDetails()"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'/assets/Info.svg'" alt="info"
                class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
-          <img (click)="onBorrow()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/List.svg'" alt="list"
+          <img (click)="onBorrow()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'/assets/List.svg'" alt="list"
                class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
-          <img (click)="onLike()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/Heart.svg'" alt="wishlist"
+          <img (click)="onLike()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               [appNgOptimizedImage]="'/assets/Heart.svg'" alt="wishlist"
                class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
         </div>
         <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2"

@@ -76,4 +76,5 @@ export class BookCardComponent {
   onArchive() {
     this.archive.emit(this._book);
   }
+
 }
