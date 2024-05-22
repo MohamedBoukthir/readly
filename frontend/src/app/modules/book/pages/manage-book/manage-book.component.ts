@@ -1,14 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookRequest} from "../../../../services/models/book-request";
 import {BookService} from "../../../../services/services/book.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-manage-book',
   templateUrl: './manage-book.component.html',
   styleUrl: './manage-book.component.css'
 })
-export class ManageBookComponent {
+export class ManageBookComponent implements OnInit {
 
   errorMessage: Array<string> = [];
   selectedPic: string | undefined;
@@ -17,9 +17,33 @@ export class ManageBookComponent {
 
   constructor(
     private bookService: BookService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
+
+  ngOnInit(): void {
+        const bookId = this.activatedRoute.snapshot.params['bookId'];
+        if (bookId) {
+          this.bookService.findBookById({
+            'book-id': bookId
+          }).subscribe({
+            next: (book) => {
+              this.bookRequest = {
+                id: book.id,
+                title: book.title as string,
+                author: book.author as string,
+                isbn: book.isbn as string,
+                synopsis: book.synopsis as string,
+                shareable: book.shareable
+              }
+              if (book.cover) {
+                this.selectedPic = 'data:image/jpeg;base64,' + book.cover;
+              }
+            }
+          });
+        }
+    }
 
   onFileSelected(image: any) {
     this.selectedBookCover = image.target.files[0];

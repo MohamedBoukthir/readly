@@ -23,24 +23,24 @@
         <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2"
              *ngIf="!manage">
           <img (click)="onShowDetails()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/Info.svg'" alt="info"
-               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+               class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
           <img (click)="onBorrow()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/List.svg'" alt="list"
-               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+               class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
           <img (click)="onLike()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" [appNgOptimizedImage]="'/assets/Heart.svg'" alt="wishlist"
-               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+               class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
         </div>
         <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium gap-2"
              *ngIf="manage">
           <img (click)="onEdit()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                [appNgOptimizedImage]="'/assets/Edit.svg'" alt="Edit"
-               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+               class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
           <img (click)="onShare()" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                [appNgOptimizedImage]="'/assets/Share.svg'" alt="Share"
-               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+               class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
           <img (click)="onArchive()"
                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                [appNgOptimizedImage]="'/assets/Archive.svg'" alt="Archive"
-               class="h-5 w-5 rounded cursor-pointer hover:-translate-y-1/2 hover:shadow-2xl">
+               class="h-5 w-5 rounded cursor-pointer transform transition-transform duration-500 hover:scale-110">
         </div>
         <div class="flex items-center mt-2">
           <img class='w-10 h-10 object-cover rounded-full' alt='User avatar'
