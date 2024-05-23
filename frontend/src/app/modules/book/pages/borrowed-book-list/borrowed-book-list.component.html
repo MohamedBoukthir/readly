@@ -1,0 +1,245 @@
+<h3 class="text-center font-bold text-2xl mb-6">
+  My Borrowed Books
+</h3>
+<hr>
+<div class="flex flex-col w-1/2" *ngIf="selectedBook">
+  <h3>Return and Share feedback</h3>
+  <div class="flex flex-col w-full">
+    <div class="flex">
+      <div class="w-1/12">
+        <strong>Title</strong>
+      </div>
+      <div class="w-11/12">
+        {{ selectedBook.title }}
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-1/12">
+        <strong>Author</strong>
+      </div>
+      <div class="w-11/12">
+        {{ selectedBook.author }}
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-1/12">
+        <strong>ISBN</strong>
+      </div>
+      <div class="w-11/12">
+        {{ selectedBook.isbn }}
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-1/12">
+        <strong>Rate</strong>
+      </div>
+      <div class="w-11/12">
+        {{ selectedBook.rate }}
+      </div>
+    </div>
+  </div>
+  <!-- feedback -->
+  <div class="w-full">
+    <form class="flex flex-col gap-3">
+      <div class="flex gap-3">
+        <input
+          [(ngModel)]="feedbackRequest.note"
+          type="range"
+          id="rate"
+          name="rate"
+          class="w-25 rounded-lg overflow-hidden appearance-none bg-gray-400 h-3"
+          min="0"
+          max="5"
+          step="0.5">
+        <app-rate [rate]="feedbackRequest.note || 0"></app-rate>
+        {{ feedbackRequest.note }}
+      </div>
+      <div class="w-full">
+        <label for="feedback"
+               class="mb-4 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Feedback</label>
+        <textarea [(ngModel)]="feedbackRequest.comment"
+                  class=" border-input block border p-2.5 w-full text-sm text-gray-900 bg-background rounded-md focus:ring-blue-500 focus:border-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  rows="4" id="feedback" name="feedback" placeholder="feedback"></textarea>
+      </div>
+      <div class="flex justify-end gap-2 w-full">
+        <button
+          (click)="returnBook(true)"
+                type="submit"
+                class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+                         focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+          Return and Share feedback
+        </button>
+        <button
+          (click)="returnBook(false)"
+          type="submit"
+          class="ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-black/90 focus-visible:outline-none
+                         focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+          Just Return Book
+        </button>
+        <button (click)="selectedBook = undefined" type="submit" class=" ring-offset-background focus-visible:ring-ring flex h-10 w-full items-center justify-center whitespace-nowrap
+                         rounded-md bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-600 focus-visible:outline-none
+                         focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- table -->
+<div class="flex flex-col" *ngIf="!selectedBook">
+  <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-x-auto">
+        <table class="min-w-full">
+          <thead class="bg-white border-b">
+          <tr>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              #
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              Title
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              Author
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              ISBN
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              Rate
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <i class="fas fa-cogs"></i>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let book of borrowedBooks.content; let index = index" class="bg-gray-100 border-b">
+            <th scope="row" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ index + 1 }}
+            </th>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ book.title }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ book.author }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ book.isbn }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              <i class="fas fa-star text-yellow-500"></i>
+              {{ book.rate }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              <div class="flex gap-2">
+                <i
+                  *ngIf="book.returned"
+                  class="fa-regular fa-paper-plane cursor-pointer transform transition-transform duration-500 hover:scale-110">
+
+                </i>
+                <i
+                  *ngIf="!book.returned"
+                  (click)="returnBorrowedBook(book)"
+                  class="fa-solid fa-paper-plane text-blue-500 cursor-pointer transform transition-transform duration-500 hover:scale-110">
+
+                </i>
+                <i class="fa-solid fa-circle-check cursor-pointer transform transition-transform duration-500 hover:scale-110"
+                   [ngClass]="{'text-green-500': book.returnApproved}">
+
+                </i>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-3" *ngIf="!selectedBook">
+  <nav aria-label="Page navigation">
+    <ul class="inline-flex space-x-2">
+      <!-- goToFirstPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': page === 0}"
+          (click)="goToFirstPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Previous"
+            [class.disabled]="page === 0"
+          >
+            <i class="fa-solid fa-angles-left"></i>
+          </a>
+        </button>
+      </li>
+      <!-- goToPreviousPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': page === 0}"
+          (click)="goToPreviousPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Previous"
+            [class.disabled]="page === 0"
+          >
+            <i class="fa-solid fa-angle-left"></i>
+          </a>
+        </button>
+      </li>
+      <!-- goToPage button -->
+      <li *ngFor="let _ of [].constructor(this.borrowedBooks.totalPages); let pageIndex = index">
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': page === pageIndex}"
+          (click)="gotToPage(pageIndex)"
+        >
+          <a
+            href="javascript:void(0)"
+          >{{ pageIndex + 1 }}
+          </a>
+        </button>
+      </li>
+      <!-- goToNextPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': isLastPage}"
+          (click)="goToNextPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Next"
+            [class.disabled]="isLastPage"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </button>
+      </li>
+      <!-- goToLastPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': isLastPage}"
+          (click)="goToLastPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Next"
+            [class.disabled]="isLastPage"
+          >
+            <i class="fa-solid fa-angles-right"></i>
+          </a>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

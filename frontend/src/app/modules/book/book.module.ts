@@ -12,6 +12,7 @@ import { RateComponent } from './components/rate/rate.component';
 import { MyBooksComponent } from './pages/my-books/my-books.component';
 import { ManageBookComponent } from './pages/manage-book/manage-book.component';
 import {FormsModule} from "@angular/forms";
+import { BorrowedBookListComponent } from './pages/borrowed-book-list/borrowed-book-list.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {FormsModule} from "@angular/forms";
     RateComponent,
     MyBooksComponent,
     ManageBookComponent,
+    BorrowedBookListComponent,
   ],
   exports: [
     NavbarComponent
