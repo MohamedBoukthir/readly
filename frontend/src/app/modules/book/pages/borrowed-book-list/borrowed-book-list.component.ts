@@ -3,6 +3,7 @@ import {PageResponseBorrowedBookResponse} from "../../../../services/models/page
 import {BorrowedBookResponse} from "../../../../services/models/borrowed-book-response";
 import {BookService} from "../../../../services/services/book.service";
 import {FeedbackRequest} from "../../../../services/models/feedback-request";
+import {FeedbackService} from "../../../../services/services/feedback.service";
 
 @Component({
   selector: 'app-borrowed-book-list',
@@ -19,10 +20,12 @@ export class BorrowedBookListComponent implements OnInit{
 
   constructor(
     private bookService: BookService,
+    private feedbackService: FeedbackService
   ) { }
 
   returnBorrowedBook(book: BorrowedBookResponse) {
     this.selectedBook = book;
+    this.feedbackRequest.bookId = book.id as number;
   }
   ngOnInit(): void {
       this.findAllBorrowedBooks();
@@ -71,7 +74,26 @@ export class BorrowedBookListComponent implements OnInit{
     return this.page === this.borrowedBooks.totalPages as number - 1;
   }
 
-  returnBook(b: boolean) {
-
+  returnBook(withFeedback: boolean) {
+    this.bookService.returnBorrowBook({
+      'book-id': this.selectedBook?.id as number,
+    }).subscribe({
+      next: () => {
+        if (withFeedback){
+          this.giveFeedback();
+        }
+        this.selectedBook = undefined;
+        this.findAllBorrowedBooks();
+      }
+    });
   }
+
+  giveFeedback() {
+        this.feedbackService.saveFeedback({
+          body: this.feedbackRequest
+        }).subscribe({
+          next: () => {
+          }
+        });
+    }
 }
