@@ -15,7 +15,8 @@ export class NavbarComponent {
   }
 
   logout() {
-
+    sessionStorage.clear();
+    window.location.reload();
   }
 }
 
