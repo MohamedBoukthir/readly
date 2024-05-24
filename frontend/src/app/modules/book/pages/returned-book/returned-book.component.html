@@ -1,0 +1,173 @@
+<h3 class="text-center font-bold text-2xl mb-6">
+  My Returned Books
+</h3>
+<!-- Alert -->
+<div *ngIf="message"
+     [ngClass]="getAlertClass()"
+     role="alert"
+>
+  <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          clip-rule="evenodd"></path>
+  </svg>
+  <div>
+    <p> {{ message }} </p>
+  </div>
+</div>
+<hr>
+<!-- table -->
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-x-auto">
+        <table class="min-w-full">
+          <thead class="bg-white border-b">
+          <tr>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              #
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              Title
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              Author
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              ISBN
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              Rate
+            </th>
+            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <i class="fas fa-cogs"></i>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let book of returnedBooks.content; let index = index" class="bg-gray-100 border-b">
+            <th scope="row" class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ index + 1 }}
+            </th>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ book.title }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ book.author }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              {{ book.isbn }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              <i class="fas fa-star text-yellow-500"></i>
+              {{ book.rate }}
+            </td>
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              <div class="flex gap-2">
+                <i
+                  *ngIf="book.returned"
+                  class="fa-regular fa-paper-plane cursor-pointer transform transition-transform duration-500 hover:scale-110">
+
+                </i>
+                <i
+                  *ngIf="!book.returned"
+                  class="fa-solid fa-paper-plane text-blue-500 cursor-pointer transform transition-transform duration-500 hover:scale-110">
+
+                </i>
+                <i class="fa-solid fa-circle-check cursor-pointer transform transition-transform duration-500 hover:scale-110"
+                   (click)="approveBookReturn(book)"
+                   [ngClass]="{'text-green-500': book.returnApproved}">
+                </i>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-3">
+  <nav aria-label="Page navigation">
+    <ul class="inline-flex space-x-2">
+      <!-- goToFirstPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': page === 0}"
+          (click)="goToFirstPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Previous"
+            [class.disabled]="page === 0"
+          >
+            <i class="fa-solid fa-angles-left"></i>
+          </a>
+        </button>
+      </li>
+      <!-- goToPreviousPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': page === 0}"
+          (click)="goToPreviousPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Previous"
+            [class.disabled]="page === 0"
+          >
+            <i class="fa-solid fa-angle-left"></i>
+          </a>
+        </button>
+      </li>
+      <!-- goToPage button -->
+      <li *ngFor="let _ of [].constructor(this.returnedBooks.totalPages); let pageIndex = index">
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': page === pageIndex}"
+          (click)="gotToPage(pageIndex)"
+        >
+          <a
+            href="javascript:void(0)"
+          >{{ pageIndex + 1 }}
+          </a>
+        </button>
+      </li>
+      <!-- goToNextPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': isLastPage}"
+          (click)="goToNextPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Next"
+            [class.disabled]="isLastPage"
+          >
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </button>
+      </li>
+      <!-- goToLastPage button -->
+      <li>
+        <button
+          class="flex items-center justify-center w-10 h-10 text-black transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-black hover:text-white p-2"
+          [ngClass]="{'bg-black text-white': isLastPage}"
+          (click)="goToLastPage()"
+        >
+          <a
+            href="javascript:void(0)"
+            aria-label="Next"
+            [class.disabled]="isLastPage"
+          >
+            <i class="fa-solid fa-angles-right"></i>
+          </a>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

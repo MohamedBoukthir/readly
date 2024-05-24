@@ -237,8 +237,8 @@ public class BookService {
         }
         User user = ((User) connectedUser.getPrincipal());
         // Check if the user is the owner of the book or throw an exception if true
-        if (Objects.equals(book.getOwner().getId(), user.getId())) {
-            throw new OperationNotPermittedException("You are not allowed to borrow or return your own book");
+        if (!Objects.equals(book.getOwner().getId(), user.getId())) {
+            throw new OperationNotPermittedException("You cannot return a book that you do not own");
         }
         // Check if the book is already borrowed by the user
         BookTransactionHistory bookTransactionHistory = bookTransactionHistoryRepository
