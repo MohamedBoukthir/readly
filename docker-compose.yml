@@ -1,4 +1,5 @@
 services:
+
   postgres:
     container_name: postgres-readly
     image: postgres
@@ -22,10 +23,19 @@ services:
       - 1080:1080
       - 1025:1025
 
+  readly-api:
+    container_name: readly-api
+    image: readly/readly:0.0.1-SNAPSHOT
+    ports:
+      - 8088:8088
+    networks:
+      - readly-network
+    depends_on:
+      - postgres
+
 networks:
   readly-network:
     driver: bridge
-
 volumes:
   postgres:
     driver: local

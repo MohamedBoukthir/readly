@@ -15,7 +15,7 @@ WORKDIR /app
 COPY --from=build /build/target/readly*.jar /app/
 
 EXPOSE 8088
-ENV DB_URL=jdbc:mysql://mysql-readly:3306/readly
+ENV DB_URL=jdbc:postgresql://postgres-readly:5432/readly
 ENV SPRING_PROFILES_ACTIVE=${PROFILE}
 ENV JAR_VERSION=${APP_VERSION}
 
