@@ -1,8 +1,4 @@
 # This file contains the environment variables for the application
-# The variables are used to connect to the database
-MYSQL_USERNAME=
-MYSQL_PASSWORD=
-DATABASE_NAME=
 
 # The variables are used to send emails
 MAIL_USERNAME=
