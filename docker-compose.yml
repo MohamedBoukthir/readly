@@ -33,6 +33,16 @@ services:
     depends_on:
       - postgres
 
+  readly-frontend:
+    container_name: readly-frontend
+    image: readly/readly-frontend:0.0.1-SNAPSHOT
+    ports:
+      - 8080:80
+    networks:
+      - readly-network
+    depends_on:
+      - readly-api
+
 networks:
   readly-network:
     driver: bridge
