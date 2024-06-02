@@ -9,7 +9,6 @@ import {FormsModule} from "@angular/forms";
 import {RegisterComponent} from './pages/register/register.component';
 import {ActivateAccountComponent} from './pages/activate-account/activate-account.component';
 import {CodeInputModule} from "angular-code-input";
-import {HomeComponent} from './pages/home/home.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpTokenInterceptor} from "./services/interceptor/http-token.interceptor";
 
@@ -20,7 +19,6 @@ import {HttpTokenInterceptor} from "./services/interceptor/http-token.intercepto
     LoginComponent,
     RegisterComponent,
     ActivateAccountComponent,
-    HomeComponent,
     NavbarComponent,
   ],
   exports: [
