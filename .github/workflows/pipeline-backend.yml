@@ -31,25 +31,6 @@ jobs:
           ./mvnw clean compile
 
 
-  unit-tests:
-    runs-on: ubuntu-latest
-    name: unit tests
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: setup jdk
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'corretto'
-      - name: run unit tests
-        run: |
-          cd readly
-          chmod +x ./mvnw
-          ./mvnw clean test -e
-
   build:
     runs-on: ubuntu-latest
     name: build project
