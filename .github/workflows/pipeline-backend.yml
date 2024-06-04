@@ -48,9 +48,8 @@ jobs:
         run: |
           cd readly
           chmod +x ./mvnw
-          ./mvnw clean test
-      - name: print test results
-        run: cat target/surefire-reports/*.txt
+          ./mvnw clean test -e
+
   build:
     runs-on: ubuntu-latest
     name: build project
