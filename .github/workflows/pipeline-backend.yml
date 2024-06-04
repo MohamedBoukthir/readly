@@ -39,10 +39,10 @@ jobs:
         with:
           fetch-depth: 0
       - name: setup jdk
-        uses: actions/setup-jdk@v4
+        uses: actions/setup-jdk@v2
         with:
-          distribution: 'corretto'
           java-version: '17'
+          distribution: 'corretto'
       - name: run unit tests
         run: |
           cd readly
