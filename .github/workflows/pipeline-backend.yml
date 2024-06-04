@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - ci/pipeline
+      - master
     paths:
       - readly/**
       - Docker/backend/**
