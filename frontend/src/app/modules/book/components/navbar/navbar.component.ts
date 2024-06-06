@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {KeycloakService} from "../../../../services/keycloak/keycloak.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +8,10 @@ import {Component} from '@angular/core';
 })
 export class NavbarComponent {
 
+  constructor(
+    private keycloakService: KeycloakService,
+  ) {}
+
   menuHidden = true;
   currentYear = new Date().getFullYear();
 
@@ -14,9 +19,8 @@ export class NavbarComponent {
     this.menuHidden = !this.menuHidden;
   }
 
-  logout() {
-    sessionStorage.clear();
-    window.location.reload();
+  async logout() {
+    this.keycloakService.logout();
   }
 }
 
