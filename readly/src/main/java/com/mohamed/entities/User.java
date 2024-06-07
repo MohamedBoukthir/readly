@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Builder
-@Entity
-@Table(name = "users")
+//@Entity
+//@Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails, Principal {
 
     @Id

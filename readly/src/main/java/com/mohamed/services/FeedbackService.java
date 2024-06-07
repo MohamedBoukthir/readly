@@ -38,9 +38,9 @@ public class FeedbackService {
         if (book.isArchived() || !book.isShareable()) {
             throw new OperationNotPermittedException("You are not allowed to give feedback on this book");
         }
-        User user = ((User) connectedUser.getPrincipal());
+//        User user = ((User) connectedUser.getPrincipal());
         // Check if the user is the owner of the book or throw an exception if true
-        if (Objects.equals(book.getOwner().getId(), user.getId())) {
+        if (Objects.equals(book.getCreatedBy(), connectedUser.getName())) {
             throw new OperationNotPermittedException("You are not allowed to give feedback on your own book");
         }
         Feedback feedback = feedbackMapper.toFeedback(feedbackRequest);
