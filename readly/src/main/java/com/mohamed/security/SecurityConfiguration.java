@@ -20,8 +20,8 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration {
 
-    private final AuthenticationProvider authenticationProvider;
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+//    private final AuthenticationProvider authenticationProvider;
+//    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -43,9 +43,12 @@ public class SecurityConfiguration {
                         "/swagger-ui.html"
                         ).permitAll().anyRequest().authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .oauth2ResourceServer(
+                        auth -> auth
+                                .jwt(token -> token.jwtAuthenticationConverter(new KeycloakJwtAuthenticationConverter()
+                                )
+                        )
+                );
         return http.build();
     }
 

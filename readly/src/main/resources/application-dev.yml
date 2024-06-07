@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: false
     properties:
       hibernate:
@@ -28,11 +28,11 @@ spring:
         starttls:
           enable: true
     protocol: smtp
-
-
-mailing:
-  frontend:
-    activation-url: http://localhost:4200/activate-account
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/readly"
 
 cors:
   origins: http://localhost:4200
@@ -40,8 +40,4 @@ cors:
 file:
   upload:
     photos-output-path: ./uploads
-
-jwt:
-    secret: ${JWT_SECRET}
-    expiration: ${JWT_EXPIRATION}
 
