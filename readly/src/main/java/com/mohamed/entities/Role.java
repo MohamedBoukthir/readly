@@ -13,10 +13,10 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@Entity
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+//@EntityListeners(AuditingEntityListener.class)
 public class Role {
 
     @Id

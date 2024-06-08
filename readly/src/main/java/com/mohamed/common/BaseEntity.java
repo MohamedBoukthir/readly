@@ -35,9 +35,9 @@ public class BaseEntity {
     private LocalDateTime updatedAt;
     @CreatedBy
     @Column(updatable = false, nullable = false)
-    private Integer createdBy;
+    private String createdBy;
     @LastModifiedBy
     @Column(insertable = false)
-    private Integer updatedBy;
+    private String updatedBy;
 
 }

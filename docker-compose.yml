@@ -22,6 +22,21 @@ services:
     ports:
       - 1080:1080
       - 1025:1025
+    networks:
+      - readly-network
+
+  keycloak:
+    container_name: keycloak-readly
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - 9090:8080
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    networks:
+      - readly-network
+    command:
+      - "start-dev"
 
   readly-api:
     container_name: readly-api

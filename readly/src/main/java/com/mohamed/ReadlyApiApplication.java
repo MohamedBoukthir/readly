@@ -18,7 +18,7 @@ public class ReadlyApiApplication {
 		SpringApplication.run(ReadlyApiApplication.class, args);
 	}
 
-	// This method is used to create a default role if it does not exist in the database.
+/*	// This method is used to create a default role if it does not exist in the database.
 	@Bean
 	public CommandLineRunner commandLineRunner(RoleRepository roleRepository) {
 		return args -> {
@@ -26,6 +26,6 @@ public class ReadlyApiApplication {
 				roleRepository.save(Role.builder().name("USER").build());
 			}
 		};
-	}
+	} */
 
 }
